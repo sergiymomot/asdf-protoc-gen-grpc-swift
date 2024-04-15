@@ -3,10 +3,10 @@
 # asdf-protoc-gen-grpc-swift [![Build](https://github.com/sergiymomot/asdf-protoc-gen-grpc-swift/actions/workflows/build.yml/badge.svg)](https://github.com/sergiymomot/asdf-protoc-gen-grpc-swift/actions/workflows/build.yml) [![Lint](https://github.com/sergiymomot/asdf-protoc-gen-grpc-swift/actions/workflows/lint.yml/badge.svg)](https://github.com/sergiymomot/asdf-protoc-gen-grpc-swift/actions/workflows/lint.yml)
 
 [protoc-gen-grpc-swift](https://github.com/grpc/grpc-swift/blob/main/docs/plugin.md) plugin for the [asdf version manager](https://asdf-vm.com).
+</div>
+
 Please note that in addition to `protoc-gen-grpc-swift` protobuf compiler plugin, `protoc-gen-swift` plugin will be installed as well.
 At the moment, [swift-protobuf](https://github.com/apple/swift-protobuf) repository does not provide prebuilt binaries for its `protoc` plugin while [grpc-swift](https://github.com/grpc/grpc-swift) provides both.
-
-</div>
 
 # Contents
 
