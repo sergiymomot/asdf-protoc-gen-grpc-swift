@@ -24,8 +24,6 @@ At the moment, [swift-protobuf](https://github.com/apple/swift-protobuf) reposit
 Plugin:
 
 ```shell
-asdf plugin add protoc-gen-grpc-swift
-# or
 asdf plugin add protoc-gen-grpc-swift https://github.com/sergiymomot/asdf-protoc-gen-grpc-swift.git
 ```
 
