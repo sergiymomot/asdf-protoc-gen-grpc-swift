@@ -10,7 +10,7 @@
 >
 > At the moment, [swift-protobuf](https://github.com/apple/swift-protobuf) repository does not provide prebuilt binaries for its `protoc` plugin while [grpc-swift](https://github.com/grpc/grpc-swift) provides both.
 >
-> If you are using [mise](https://www.example.com) to manage plugins and would like to skip installation of `protoc-gen-swift`, you can pass the `skip_protoc_gen_swift_install` environment variable like so:
+> If you are using [mise](https://mise.jdx.dev) to manage plugins and would like to skip installation of `protoc-gen-swift`, you can pass the `skip_protoc_gen_swift_install` environment variable like so:
 >
 > `protoc-gen-grpc-swift = { version = '1.23.0', skip_protoc_gen_swift_install = 'true' }`
 >
