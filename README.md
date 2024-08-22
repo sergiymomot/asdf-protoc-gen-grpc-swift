@@ -5,8 +5,16 @@
 [protoc-gen-grpc-swift](https://github.com/grpc/grpc-swift/blob/main/docs/plugin.md) plugin for the [asdf version manager](https://asdf-vm.com).
 </div>
 
-Please note that in addition to `protoc-gen-grpc-swift` protobuf compiler plugin, `protoc-gen-swift` plugin will be installed as well.
-At the moment, [swift-protobuf](https://github.com/apple/swift-protobuf) repository does not provide prebuilt binaries for its `protoc` plugin while [grpc-swift](https://github.com/grpc/grpc-swift) provides both.
+> [!NOTE]
+> In addition to `protoc-gen-grpc-swift` protobuf compiler plugin, `protoc-gen-swift` plugin will be installed as well.
+>
+> At the moment, [swift-protobuf](https://github.com/apple/swift-protobuf) repository does not provide prebuilt binaries for its `protoc` plugin while [grpc-swift](https://github.com/grpc/grpc-swift) provides both.
+>
+> If you are using [mise](https://www.example.com) to manage plugins and would like to skip installation of `protoc-gen-swift`, you can pass the `skip_protoc_gen_swift_install` environment variable like so:
+>
+> `protoc-gen-grpc-swift = { version = '1.23.0', skip_protoc_gen_swift_install = 'true' }`
+>
+> This will be passed to the plugin scripts as `MISE_TOOL_OPTS__SKIP_PROTOC_GEN_SWIFT_INSTALL=true`
 
 # Contents
 
