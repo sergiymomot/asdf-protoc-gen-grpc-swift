@@ -48,6 +48,8 @@ install_version() {
 	local install_type="$1"
 	local version="$2"
 	local install_path="${3%/bin}/bin"
+	local skip_protoc_gen_swift
+	skip_protoc_gen_swift="$(eval "echo ${MISE_TOOL_OPTS__SKIP_PROTOC_GEN_SWIFT_INSTALL-}")"
 
 	if [ "$install_type" != "version" ]; then
 		fail "asdf-$TOOL_NAME supports release installs only"
@@ -55,14 +57,24 @@ install_version() {
 
 	(
 		mkdir -p "$install_path"
-		cp -r "$ASDF_DOWNLOAD_PATH"/bin/* "$install_path"
 
-		declare -a test_cmds=("$TOOL_TEST_GEN_SWIFT" "$TOOL_TEST_GEN_GRPC_SWIFT")
-		for TOOL_TEST in "${test_cmds[@]}"; do
+		if [[ "$skip_protoc_gen_swift" =~ ^(true|TRUE|1)$ ]]; then
+			echo "Skipping protoc-gen-swift installation"
+
+			cp -r "$ASDF_DOWNLOAD_PATH/bin/$TOOL_NAME" "$install_path"
 			local tool_cmd
-			tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
+			tool_cmd="$(echo "$TOOL_TEST_GEN_GRPC_SWIFT" | cut -d' ' -f1)"
 			test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
-		done
+		else
+			cp -r "$ASDF_DOWNLOAD_PATH"/bin/* "$install_path"
+
+			declare -a test_cmds=("$TOOL_TEST_GEN_SWIFT" "$TOOL_TEST_GEN_GRPC_SWIFT")
+			for TOOL_TEST in "${test_cmds[@]}"; do
+				local tool_cmd
+				tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
+				test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
+			done
+		fi
 
 		echo "$TOOL_NAME $version installation was successful!"
 	) || (
